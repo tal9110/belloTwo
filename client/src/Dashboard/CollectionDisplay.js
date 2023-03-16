@@ -8,7 +8,8 @@ export default function CollectionDisplay() {
       <div
         style={{
           height: "345px",
-          background: "linear-gradient(to bottom, #AA275B 50%, #EDEDED 50%)",
+          background:
+            "linear-gradient(to bottom, rgba(170, 39, 91, 0) 50%, #EDEDED 50%)",
         }}
       >
         <Stack>

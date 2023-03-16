@@ -35,7 +35,7 @@ export default function R3f(props) {
       <color attach="background" args={["#AA275B"]} />
       <ambientLight />
       <directionalLight castShadow intensity={0.6} position={[0, 0, 10]} />
-      <group position={[14, -1, 0]}>
+      <group position={[13, -4, 0]}>
         <Float floatIntensity={5} rotationIntensity={0} speed={2}>
           <group ref={bellieRef} scale={10} rotation-x={Math.PI / 2}>
             <Bellie />
