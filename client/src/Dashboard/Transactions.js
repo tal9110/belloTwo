@@ -77,15 +77,6 @@ const TransactionCard = ({
         From: {addressFrom.slice(0, 3)}...{addressFrom.slice(-4)}
       </Text>
     </Paper>
-    // <div>
-    //   <div>{addressTo}</div>
-    //   <div>{addressFrom}</div>
-    //   <div>{timestamp}</div>
-    //   <div>{message}</div>
-    //   <div>{keyword}</div>
-    //   <div>{amount}</div>
-    //   <div>{url}</div>
-    // </div>
   );
 };
 
