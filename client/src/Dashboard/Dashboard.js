@@ -1,21 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Image,
   Text,
   Center,
   Stack,
-  Input,
   Group,
-  ActionIcon,
   UnstyledButton,
   Button,
-  Card,
-  Container,
-  Title,
-  ScrollArea,
   Modal,
   TextInput,
-  NumberInput,
   Popover,
 } from "@mantine/core";
 import { RxMagnifyingGlass } from "react-icons/rx";
@@ -26,13 +19,14 @@ import { useContext } from "react";
 import { FaEthereum } from "react-icons/fa";
 import { useDisclosure } from "@mantine/hooks";
 import Transactions from "./Transactions";
+import "./styles.css";
+import R3f from "./R3f";
 
 export default function Dashboard() {
   const {
     connectWallet,
     currentAccount,
     formData,
-    setFormData,
     handleChange,
     sendTransaction,
     isLoading,
@@ -65,9 +59,12 @@ export default function Dashboard() {
     close();
     setTransactionComplete(false);
   };
+  const [spin, setSpin] = useState(0);
 
   return (
     <>
+      <R3f spin={spin} />
+
       <Modal centered opened={opened} onClose={handleClose} title="Send Money">
         <Stack>
           {!transactionComplete ? (
@@ -112,6 +109,7 @@ export default function Dashboard() {
           )}
         </Stack>
       </Modal>
+      {/* <div style={{ position: "absolute", zIndex: 2 }}> */}
       <div
         style={{
           display: "flex",
@@ -135,13 +133,6 @@ export default function Dashboard() {
                 </Popover.Dropdown>
               </Popover>
 
-              <Text
-                mb={5}
-                style={{ fontSize: "30px", fontWeight: 100 }}
-                color="white"
-              >
-                |
-              </Text>
               <Button color="dark" variant="subtle">
                 <Group>
                   <Image width={22} src={"/circle.png"} />
@@ -155,14 +146,13 @@ export default function Dashboard() {
               </Button>
             </Group>
             <Button
-              // mt={10}
               variant="white"
               color="pink.9"
               rightIcon={<FaEthereum size={18} />}
               onClick={() => handleOpen()}
               size="sm"
             >
-              Send someone money
+              Send ETH
             </Button>
           </Stack>
         ) : (
@@ -174,7 +164,7 @@ export default function Dashboard() {
       <div
         style={{
           position: "relative",
-          backgroundColor: "rgb(171, 39, 91)",
+          backgroundColor: "rgba(171, 39, 91, 0)",
           minHeight: "480px",
           paddingBottom: "5px",
         }}
@@ -184,35 +174,39 @@ export default function Dashboard() {
           <Text color="white" sx={{ fontSize: 50 }}>
             Discover More About Your Collectors
           </Text>
-          <Input
-            sx={{
-              backgroundColor: "rgba(255, 255, 255, 0.314)",
-              borderRadius: "5px",
-              color: "white",
-              width: "660px",
-              padding: "10px",
-              margin: "1.5px",
-              fontSize: "20px",
-            }}
-            style={{ color: "white" }}
-            // inputStyle={{ color: "white" }}
-            variant="unstyled"
+
+          <input
+            type="text"
             placeholder="Search a contract or collection"
-            color="blue"
-            radius={"md"}
+            style={{
+              width: "660px",
+              backgroundColor: "rgba(255, 255, 255, 0.3)",
+              height: "60px",
+              fontSize: "20px",
+              color: "white",
+              fontWeight: 500,
+              border: "none",
+              borderRadius: "5px",
+              paddingLeft: "25px",
+              paddingRight: "16px",
+              outline: "none",
+            }}
           />
           <Button
             mt={10}
             variant="white"
             color="pink.9"
             leftIcon={<RxMagnifyingGlass size={18} />}
+            onClick={() => setSpin(spin + 1)}
           >
             Build custom search
           </Button>
         </Stack>
       </div>
-      <CollectionDisplay />
-      <Footer />
+      <div style={{ position: "absolute", zIndex: "1" }}>
+        <CollectionDisplay />
+        <Footer />
+      </div>
     </>
   );
 }

@@ -1,12 +1,4 @@
-import {
-  createStyles,
-  Card,
-  Avatar,
-  Text,
-  Group,
-  Button,
-  rem,
-} from "@mantine/core";
+import { createStyles, Card, Avatar, Text, rem } from "@mantine/core";
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -25,17 +17,6 @@ const useStyles = createStyles((theme) => ({
 
 export default function CollectionCard({ image, avatar, name, job, stats }) {
   const { classes, theme } = useStyles();
-
-  //   const items = stats.map((stat) => (
-  //     <div key={stat.label}>
-  //       <Text ta="center" fz="lg" fw={500}>
-  //         {stat.value}
-  //       </Text>
-  //       <Text ta="center" fz="sm" c="dimmed">
-  //         {stat.label}
-  //       </Text>
-  //     </div>
-  //   ));
 
   return (
     <Card

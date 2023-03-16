@@ -35,7 +35,7 @@ export const TransactionProvider = ({ children }) => {
 
   const getAllTransactions = async () => {
     try {
-      if (!ethereum) return alert("Please install MetaMask first.");
+      if (!ethereum) return alert("Install MetaMask to continue.");
       const transactionContract = getEthereumContract();
       const availableTransactions =
         await transactionContract.getAllTransactions();
@@ -54,8 +54,6 @@ export const TransactionProvider = ({ children }) => {
         }
       );
 
-      // console.log(structuredTransactions);
-
       setTransactions(structuredTransactions);
     } catch (error) {
       console.log(error);
@@ -65,7 +63,7 @@ export const TransactionProvider = ({ children }) => {
 
   const checkIfWalletIsConnected = async () => {
     try {
-      if (!ethereum) return alert("Please install MetaMask first.");
+      if (!ethereum) return alert("Install MetaMask to continue.");
 
       const accounts = await ethereum.request({ method: "eth_accounts" });
 
@@ -95,7 +93,7 @@ export const TransactionProvider = ({ children }) => {
 
   const connectWallet = async () => {
     try {
-      if (!ethereum) return alert("Please install MetaMask first.");
+      if (!ethereum) return alert("Install MetaMask to continue.");
       const accounts = await ethereum.request({
         method: "eth_requestAccounts",
       });
@@ -108,7 +106,7 @@ export const TransactionProvider = ({ children }) => {
 
   const sendTransaction = async () => {
     try {
-      if (!ethereum) return alert("Please install MetaMask first.");
+      if (!ethereum) return alert("Install MetaMask to continue.");
 
       const { addressTo, amount, keyword, message } = formData;
       const transactionContract = getEthereumContract();
@@ -139,7 +137,6 @@ export const TransactionProvider = ({ children }) => {
       await transactionHash.wait();
 
       setIsLoading(false);
-      // console.log(`Success -${transactionContract.hash}`);
 
       const transactionCount = await transactionContract.getTransactionCount();
       setTransactionCount(transactionCount.toNumber());

@@ -13,8 +13,6 @@ export default function Footer() {
     <div
       style={{
         position: "relative",
-        // display: "flex",
-        // justifyContent: "flex-end",
         backgroundColor: "rgb(171, 39, 91)",
         paddingBottom: "15px",
         padding: "1rem",

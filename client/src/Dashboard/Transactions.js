@@ -5,12 +5,9 @@ import {
   Title,
   createStyles,
   Text,
-  Card,
-  RingProgress,
   Group,
   rem,
   Paper,
-  Icon,
 } from "@mantine/core";
 import { GrTransaction } from "react-icons/gr";
 
@@ -43,15 +40,7 @@ const useStyles = createStyles((theme) => ({
     textTransform: "uppercase",
   },
 }));
-const TransactionCard = ({
-  addressTo,
-  addressFrom,
-  timestamp,
-  message,
-  keyword,
-  amount,
-  url,
-}) => {
+const TransactionCard = ({ addressTo, addressFrom, timestamp, amount }) => {
   const classes = useStyles();
 
   return (
@@ -60,12 +49,10 @@ const TransactionCard = ({
         <Text size="xs" color="dimmed" className={classes.title}>
           {timestamp}
         </Text>
-        {/* <Icon className={classes.icon} size="1.4rem" stroke={1.5} /> */}
         <GrTransaction />
       </Group>
       <Text color={"teal"} fz="sm" fw={500} className={classes.diff}>
         <span>+{amount} ETH</span>
-        {/* <DiffIcon size="1rem" stroke={1.5} /> */}
       </Text>
       <Group align="flex-end" spacing="xs" mt={25}>
         <Text className={classes.value}>
